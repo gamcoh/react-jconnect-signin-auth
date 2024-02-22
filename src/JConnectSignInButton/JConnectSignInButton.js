@@ -1,9 +1,7 @@
 /** @flow */
 import React from 'react';
 
-import useScript from '../hooks/useScript';
-
-import JConnectAuthHelpers from '../JConnectAuthHelpers';
+import signIn from '../JConnectAuthHelpers';
 
 import logo from "../../public/images/logo-dark.png";
 import logoLight from "../../public/images/logo.png";
@@ -70,7 +68,6 @@ const _style = `
 export default function JConnectSignInButton ({
   onSuccess,
   onError,
-  skipScript = false,
   authOptions,
   iconProps,
   render,
@@ -80,16 +77,13 @@ export default function JConnectSignInButton ({
   buttonExtraChildren = 'Continue with JConnect',
   ...rest
 }: Props) {
-  /** load script if neccessary */
-  useScript(skipScript ? null : JConnectAuthHelpers.JCONNECT_SCRIPT_SRC);
-
   /** Button click handler */
   const handleClick = (e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    JConnectAuthHelpers.signIn({ authOptions, onSuccess, onError });
+    signIn({ authOptions, onSuccess, onError });
   };
 
   /** common props */

@@ -10,8 +10,6 @@ declare module 'react-apple-signin-auth' {
     redirectURI: string;
     /** State string that is returned with the apple response */
     state?: string;
-    /** Nonce */
-    nonce?: string;
     /** Uses popup auth instead of redirection */
     usePopup?: boolean;
   };
@@ -41,8 +39,6 @@ declare module 'react-apple-signin-auth' {
     onSuccess: Function;
     /** Called upon signin error */
     onError: Function;
-    /** Skips loading the apple script if true */
-    skipScript?: boolean;
     /** Apple image props */
     iconProps?: Object;
     /** render function - called with all props - can be used to fully customize the UI by rendering your own component  */
@@ -64,8 +60,6 @@ declare module 'react-apple-signin-auth' {
     onError?: Function;
   };
 
-  function useScript(src: string | null | undefined): void;
-
   namespace appleAuthHelpers {
     let APPLE_SCRIPT_SRC: string;
     function signIn(props: SignInProps): Promise<AppleAuthResponse | null>;
@@ -74,5 +68,5 @@ declare module 'react-apple-signin-auth' {
   function AppleSignInButton(props: AppleSignInButtonProps): JSX.Element;
 
   export default AppleSignInButton;
-  export { appleAuthHelpers, useScript };
+  export { appleAuthHelpers };
 }
