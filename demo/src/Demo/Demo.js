@@ -20,15 +20,21 @@ function Demo() {
     className: 'jconnect-auth-btn',
     noDefaultStyle: false,
     buttonExtraChildren: 'Continue with JConnect',
+    onSuccess: (response) => {
+      console.log(response);
+    },
+    onError: (err) => {
+      console.log(err);
+    },
   });
   const [codeString, setCodeString] = useState('');
 
   /** Update code string */
   useEffect(() => {
-    setCodeString(`import JConnectSignIn from 'react-jconnect-signin-auth';
+    setCodeString(`import JConnectSignInButton from 'react-jconnect-signin-auth';
 
 export default const MyApp = () => (
-  <JConnectSignIn
+  <JConnectSignInButton
     authOptions={{
       clientId: '${authOptions.clientId}',
       scope: '${authOptions.scope}',
