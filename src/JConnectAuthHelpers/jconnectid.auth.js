@@ -10,13 +10,13 @@ function checkArgs(args) {
 
 // Opens a popup for authentication
 function openPopup(args, onError) {
-  const width = 700,
-    height = 700;
+  const width = 700;
+    const height = 700;
   const left = (window.innerWidth - width) / 2;
   const top = (window.innerHeight - height) / 2;
   const url = `${JCONNECT_AUTH_URL}/front?client_id=${args.clientId}&redirect_uri=${args.redirectUri}`;
 
-  let popupWindow = window.open(
+  const popupWindow = window.open(
     url,
     'JConnect Login',
     `width=${width},height=${height},top=${top},left=${left}`,
@@ -53,7 +53,7 @@ function signIn({
   try {
     window.addEventListener(
       'message',
-      function (event) {
+      (event) => {
         if (event.origin !== JCONNECT_AUTH_URL) {
           return;
         }
