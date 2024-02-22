@@ -1,9 +1,9 @@
 /** @flow */
 import waitForVar from '../utils/waitForVar';
 
-import type { AppleAuthOptions, AppleAuthResponse } from '../types';
+import type { JConnectAuthOptions, JConnectAuthResponse } from '../types';
 
-const APPLE_SCRIPT_SRC: string =
+const JCONNECT_SCRIPT_SRC: string =
   'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
 
 /**
@@ -14,11 +14,11 @@ const signIn = ({
   onSuccess,
   onError,
 }: {
-  authOptions: AppleAuthOptions,
-  onSuccess?: Function,
-  onError?: Function,
-}): Promise<?AppleAuthResponse> =>
-  /** wait for apple sript to load */
+    authOptions: JConnectAuthOptions,
+    onSuccess?: Function,
+    onError?: Function,
+  }): Promise<?JConnectAuthResponse> =>
+  /** wait for apple script to load */
   waitForVar('AppleID')
     .then(() => {
       /** Handle if appleID script was not loaded -- log + throw error to be caught below */
@@ -50,6 +50,7 @@ const signIn = ({
         });
     })
     .catch((err) => {
+      console.log(err);
       if (onError) {
         /** Call onError catching the error */
         onError(err);
@@ -60,7 +61,8 @@ const signIn = ({
 
       return null;
     });
+
 export default {
-  APPLE_SCRIPT_SRC,
+  JCONNECT_SCRIPT_SRC,
   signIn,
 };
