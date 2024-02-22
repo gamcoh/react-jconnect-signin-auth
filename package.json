@@ -1,24 +1,24 @@
 {
-  "name": "react-apple-signin-auth",
-  "version": "1.1.0",
-  "description": " Apple signin for React using the official Apple JS SDK",
+  "name": "react-jconnect-signin-auth",
+  "version": "0.1.0",
+  "description": "JConnect signin for React",
   "author": {
-    "name": "Ahmed Tarek",
-    "email": "ahmed.tokyo1@gmail.com",
-    "url": "https://github.com/A-Tokyo"
+    "name": "Gamliel Cohen",
+    "email": "cohengamliel8@gmail.com",
+    "url": "https://github.com/gamcoh"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/a-tokyo/react-apple-signin-auth.git"
+    "url": "https://github.com/gamcoh/react-jconnect-signin-auth"
   },
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist/"
   ],
-  "homepage": "https://github.com/a-tokyo/react-apple-signin-auth#readme",
+  "homepage": "https://github.com/gamcoh/react-jconnect-signin-auth#readme",
   "bugs": {
-    "url": "https://github.com/a-tokyo/react-apple-signin-auth/issues"
+    "url": "https://github.com/gamcoh/react-jconnect-signin-auth/issues"
   },
   "scripts": {
     "start": "webpack serve --mode development",
@@ -90,35 +90,23 @@
   },
   "license": "MIT",
   "keywords": [
-    "apple",
+    "jconnect",
     "signin",
     "login",
     "auth",
     "authentication",
     "react",
     "react-component",
-    "react-apple",
-    "apple-js",
-    "apple-sdk",
-    "apple-id",
-    "appleID",
-    "apple-signin",
+    "jconnect-signin",
     "demo",
     "popup",
     "modal",
-    "no-redirect",
     "jwt",
     "es6",
+    "angular",
+    "svelte",
     "vue",
-    "vue-apple",
     "flow",
     "types"
-  ],
-  "contributors": [
-    {
-      "name": "Ahmed Tarek",
-      "email": "ahmed.tokyo1@gmail.com",
-      "url": "https://github.com/A-Tokyo"
-    }
   ]
 }

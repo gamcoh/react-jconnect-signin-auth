@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import pkgJson from '../../../package.json';
-import AppleSigninButton from '../../../src';
+import JConnectSignInButton from '../../../src';
 
 import './Demo.css';
 
@@ -13,31 +13,27 @@ function Demo() {
     scope: 'email name',
     redirectURI: 'https://example.com',
     state: '',
-    nonce: 'nonce',
     usePopup: true,
   });
   const [extraProps, setExtraProps] = useState({
     uiType: 'dark',
-    className: 'apple-auth-btn',
+    className: 'jconnect-auth-btn',
     noDefaultStyle: false,
-    buttonExtraChildren: 'Continue with Apple',
+    buttonExtraChildren: 'Continue with JConnect',
   });
   const [codeString, setCodeString] = useState('');
 
   /** Update code string */
   useEffect(() => {
-    setCodeString(`import AppleSignin from 'react-apple-signin-auth';
+    setCodeString(`import JConnectSignIn from 'react-jconnect-signin-auth';
 
-/** Apple Signin button */
-const MyAppleSigninButton = ({ ...rest }) => (
-  <AppleSignin
-    /** Auth options passed to AppleID.auth.init() */
+export default const MyApp = () => (
+  <JConnectSignIn
     authOptions={{
       clientId: '${authOptions.clientId}',
       scope: '${authOptions.scope}',
       redirectURI: '${authOptions.redirectURI}',
       state: '${authOptions.state}',
-      nonce: '${authOptions.nonce}',
       usePopup: ${authOptions.usePopup},
     }}
     /** General props */
@@ -51,16 +47,12 @@ const MyAppleSigninButton = ({ ...rest }) => (
         : ''
     }${
       extraProps.buttonExtraChildren
-        ? `\n    /** Allows to change the button's children, eg: for changing the button text */\n    buttonExtraChildren=${extraProps.buttonExtraChildren}`
+        ? `\n    /** Allows to change the button's children, eg: for changing the button text */\n    buttonExtraChildren="${extraProps.buttonExtraChildren}"`
         : ''
     }
     /** Checkout README.md for further customization props. */
-    /** Spread rest props if needed */
-    {...rest}
   />
 );
-
-export default MyAppleSigninButton;
 `);
   }, [authOptions, extraProps]);
 
@@ -73,7 +65,7 @@ export default MyAppleSigninButton;
       <div className="container">
         <section>
           <h3>UI:</h3>
-          <AppleSigninButton authOptions={authOptions} {...extraProps} />
+          <JConnectSignInButton authOptions={authOptions} {...extraProps} />
           <h3>Code:</h3>
           <div className="code-ui">
             <SyntaxHighlighter language="javascript" style={atomDark}>
@@ -124,15 +116,6 @@ export default MyAppleSigninButton;
               value={authOptions.state}
               onChange={({ target: { value } }) =>
                 setAuthOptions((currVal) => ({ ...currVal, state: value }))
-              }
-            />
-            <label htmlFor="nonce">Nonce:</label>
-            <input
-              type="text"
-              placeholder="nonce"
-              value={authOptions.nonce}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({ ...currVal, nonce: value }))
               }
             />
             <div>
@@ -232,7 +215,7 @@ export default MyAppleSigninButton;
         <span role="img" aria-label="love">
           ❤️
         </span>{' '}
-        by <a href="https://ahmedtokyo.com">Ahmed Tokyo</a>
+        by <a href="https://github.com/gamcoh">the JConnect team</a>
         <div>
           version:
           {pkgJson.version}

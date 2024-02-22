@@ -1,9 +1,9 @@
 /* @flow */
-import AppleSigninButton from './AppleSigninButton/AppleSigninButton';
+import JConnectSignInButton from './JConnectSignInButton/JConnectSignInButton';
 import appleAuthHelpers from './appleAuthHelpers';
 
 export { default as useScript } from './hooks/useScript';
 
 export { appleAuthHelpers };
 
-export default AppleSigninButton;
+export default JConnectSignInButton;

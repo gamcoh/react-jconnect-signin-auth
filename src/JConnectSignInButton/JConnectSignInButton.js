@@ -59,7 +59,7 @@ const _style = `
   border-color: #FFF;
 }`.replace(/ {2}|\n/g, '');
 
-const AppleSigninButton = ({
+export default function JConnectSignInButton({
   onSuccess,
   onError,
   skipScript = false,
@@ -71,7 +71,7 @@ const AppleSigninButton = ({
   noDefaultStyle = false,
   buttonExtraChildren = 'Continue with Apple',
   ...rest
-}: Props) => {
+}: Props) {
   /** load script if neccessary */
   useScript(skipScript ? null : appleAuthHelpers.APPLE_SCRIPT_SRC);
 
@@ -132,6 +132,4 @@ const AppleSigninButton = ({
       {noDefaultStyle ? null : <style>{_style}</style>}
     </>
   );
-};
-
-export default AppleSigninButton;
+}
