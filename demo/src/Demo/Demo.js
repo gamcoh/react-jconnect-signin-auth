@@ -9,10 +9,12 @@ import './Demo.css';
 
 function Demo() {
   const [authOptions, setAuthOptions] = useState({
-    clientId: 'com.example.web',
-    scope: 'email name',
-    redirectURI: 'https://example.com',
-    state: '',
+    clientId: '576ed8da-1374-4b54-82a4-dc4c81a262fd',
+    scope: 'email profile',
+    redirectURI:
+      'https://jewbuzz-test.com?utm_source=jconnectid&utm_medium=web&utm_campaign=auth_redirect',
+    state: 'hey',
+    responseType: 'code',
     usePopup: true,
   });
   const [extraProps, setExtraProps] = useState({
