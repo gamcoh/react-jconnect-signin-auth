@@ -1,5 +1,5 @@
 /** @flow */
-import type { JConnectAuthOptions, JConnectAuthResponse } from '../types';
+import { JConnectAuthOptions, JConnectAuthResponse } from '../types';
 import { signIn as JConnectSignIn } from './jconnectid.auth';
 
 export default function signIn({

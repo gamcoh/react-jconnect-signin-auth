@@ -10,10 +10,9 @@ import './Demo.css';
 function Demo() {
   const [authOptions, setAuthOptions] = useState({
     clientId: '576ed8da-1374-4b54-82a4-dc4c81a262fd',
-    scope: 'email profile',
+    scope: 'email full_name',
     redirectURI:
       'https://jewbuzz-test.com?utm_source=jconnectid&utm_medium=web&utm_campaign=auth_redirect',
-    state: 'hey',
     responseType: 'code',
     usePopup: true,
   });
@@ -23,7 +22,7 @@ function Demo() {
     noDefaultStyle: false,
     buttonExtraChildren: 'Continue with JConnect',
     onSuccess: (response) => {
-      console.log(response);
+      console.log('from demo', response);
     },
     onError: (err) => {
       console.log(err);
@@ -41,7 +40,6 @@ export default const MyApp = () => (
       clientId: '${authOptions.clientId}',
       scope: '${authOptions.scope}',
       redirectURI: '${authOptions.redirectURI}',
-      state: '${authOptions.state}',
       usePopup: ${authOptions.usePopup},
     }}
     /** General props */
@@ -115,15 +113,6 @@ export default const MyApp = () => (
                   ...currVal,
                   redirectURI: value,
                 }))
-              }
-            />
-            <label htmlFor="redirectURI">State:</label>
-            <input
-              type="text"
-              placeholder="state"
-              value={authOptions.state}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({ ...currVal, state: value }))
               }
             />
             <div>

@@ -3,33 +3,10 @@ import React from 'react';
 
 import signIn from '../JConnectAuthHelpers';
 
-import logo from "../../public/images/logo-dark.png";
-import logoLight from "../../public/images/logo.png";
+import logo from '../assets/images/logo-dark.png';
+import logoLight from '../assets/images/logo.png';
 
-import type { JConnectAuthOptions } from '../types';
-
-type Props = {
-  authOptions: JConnectAuthOptions,
-  /** Called upon signin success in case authOptions.usePopup = true -- which means auth is handled client side */
-  onSuccess: Function,
-  /** Called upon signin error */
-  onError: Function,
-  /** Skips loading the jconnect script if true */
-  skipScript?: boolean,
-  /** jconnect image props */
-  iconProps: Object,
-  /** render function - called with all props - can be used to fully customize the UI by rendering your own component  */
-  render?: Function,
-  /** UI type */
-  uiType: 'light' | 'dark',
-  /** className */
-  className?: ?string,
-  /** prevents rendering of default styles */
-  noDefaultStyle?: boolean,
-  /** Allows to change the button's children, eg: for changing the button text */
-  buttonExtraChildren?: string | React$Node,
-  /** Rest is spread on the root button component */
-};
+import { JConnectSignInButtonProps } from '../types';
 
 /** css styles */
 const _style = `
@@ -65,7 +42,7 @@ const _style = `
   border-color: #FFF;
 }`.replace(/ {2}|\n/g, '');
 
-export default function JConnectSignInButton ({
+export default function JConnectSignInButton({
   onSuccess,
   onError,
   authOptions,
@@ -76,7 +53,7 @@ export default function JConnectSignInButton ({
   noDefaultStyle = false,
   buttonExtraChildren = 'Continue with JConnect',
   ...rest
-}: Props) {
+}: JConnectSignInButtonProps) {
   /** Button click handler */
   const handleClick = (e) => {
     if (e) {
@@ -91,9 +68,7 @@ export default function JConnectSignInButton ({
     children: (
       <>
         <img src={uiType === 'dark' ? logo : logoLight} alt="JConnect" />
-        <div>
-          {buttonExtraChildren}
-        </div>
+        <div>{buttonExtraChildren}</div>
       </>
     ),
     onClick: handleClick,
@@ -115,10 +90,10 @@ export default function JConnectSignInButton ({
             : `react-jconnect-signin-auth-btn react-jconnect-signin-auth-btn-${uiType}`
         }${className ? ` ${className}` : ''}`}
         type="button"
-        aria-label="Signin with jconnect ID"
+        aria-label="Signin with JConnect"
         {...props}
       />
       {noDefaultStyle ? null : <style>{_style}</style>}
     </>
   );
-};
+}
