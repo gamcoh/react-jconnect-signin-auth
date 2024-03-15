@@ -1,4 +1,4 @@
-const JCONNECT_AUTH_URL = 'http://127.0.0.1:8000';
+const JCONNECT_AUTH_URL = 'https://jconnect.cloud/api';
 
 // Validates the arguments
 function checkArgs(args) {
