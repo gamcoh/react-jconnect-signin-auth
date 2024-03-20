@@ -24,7 +24,7 @@ async function openPopup(args, onError) {
   const height = 700;
   const left = (window.innerWidth - width) / 2;
   const top = (window.innerHeight - height) / 2;
-  const url = new URL(`${JCONNECT_AUTH_URL}/authorize`);
+  const url = new URL(`${JCONNECT_AUTH_URL}/authorize/`);
   url.searchParams.append('client_id', args.clientId);
   url.searchParams.append('redirect_uri', args.redirectURI);
   url.searchParams.append('scope', args.scope);
@@ -125,7 +125,7 @@ function exchangeCodeForToken({
   onError,
   onSuccess,
 }) {
-  fetch(`${JCONNECT_AUTH_URL}/token`, {
+  fetch(`${JCONNECT_AUTH_URL}/token/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -163,7 +163,8 @@ function signIn({
     window.addEventListener(
       'message',
       (event) => {
-        if (event.origin !== JCONNECT_AUTH_URL) {
+        const origin = new URL(event.origin);
+        if (event.origin !== origin.origin) {
           return;
         }
 
